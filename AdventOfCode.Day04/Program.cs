@@ -12,17 +12,16 @@
 int PartOne()
 {
     return pairs
-        .Select(pair =>
-            new ValueTuple<int, int>(
-                pair.Item1.Intersect(pair.Item2).Count(),
-                int.Min(pair.Item1.Count(), pair.Item2.Count())))
+        .Select(pair => new ValueTuple<int, int>(
+            pair.Item1.Intersect(pair.Item2).Count(),
+            int.Min(pair.Item1.Count(), pair.Item2.Count())))
         .Aggregate(0, (acc, count) => acc + (count.Item1 == count.Item2 ? 1 : 0));
 }
 
 int PartTwo()
 {
     return pairs
-        .Select(p => p.Item1.Intersect(p.Item2).Count())
+        .Select(pair => pair.Item1.Intersect(pair.Item2).Count())
         .Aggregate(0, (acc, count) => acc + (count > 0 ? 1 : 0));
 }
 
